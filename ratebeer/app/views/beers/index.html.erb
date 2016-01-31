@@ -1,7 +1,15 @@
+
 <p id="notice"><%= notice %></p>
 
 <h1>Listing Beers</h1>
-
+  <tbody>
+    <% @beers.each do |beer| %>
+      <% byebug if beer.brewery.nil? %>
+      <tr>
+        
+      </tr>
+    <% end %>
+  </tbody>
 <table>
   <thead>
     <tr>
@@ -15,10 +23,9 @@
   <tbody>
     <% @beers.each do |beer| %>
       <tr>
-        <td><%= beer.name %></td>
+        <td><%= link_to beer.to_s, beer %></td>
         <td><%= beer.style %></td>
         <td><%= link_to beer.brewery.name, beer.brewery %></td>
-        
         <td><%= link_to 'Edit', edit_beer_path(beer) %></td>
         <td><%= link_to 'Destroy', beer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
@@ -30,5 +37,4 @@
 
 <%= link_to 'New Beer', new_beer_path %>
 <br>
-<%= link_to 'List of breweries', breweries_path %>
-</br>
+<%= link_to 'list of breweries', breweries_path %>
